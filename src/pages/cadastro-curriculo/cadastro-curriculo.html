@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de Currículo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (ngSubmit)="cadastrarCurriculo()" [formGroup]="form" class="cadastro-form">
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="curriculo.Nome" formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de nascimento</ion-label>
+      <ion-input type="text" [(ngModel)]="curriculo.DataNascimento" formControlName="dataNascimento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CPF</ion-label>
+      <ion-input type="tel" [(ngModel)]="curriculo.CPF" placeholder="000.000.000-00" [textMask]="{mask: maskCpf, guide: false}"
+        name="cpf" formControlName="cpf"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="tel" [(ngModel)]="curriculo.Telefone" placeholder="(00) 00000-0000" [textMask]="{mask: telefoneMask, guide: false}"
+        formControlName="telefone"></ion-input>
+    </ion-item>
+    
+    <p>Currículo (pdf)</p>
+    <ion-item>
+      <!--<ion-label stacked item-end>Arquivo</ion-label>-->
+      <input type="file" accept="application/pdf" (change)="onPdf($event)"> 
+    </ion-item>
+
+    <button ion-button full class="button-cadastro" type="submit">Cadastrar</button>
+  </form>
+</ion-content>

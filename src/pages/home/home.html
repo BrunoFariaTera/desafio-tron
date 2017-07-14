@@ -1,14 +1,43 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-row *ngIf="!pesquisaVisivel">
+      <ion-title>
+        {{descricaoDaPagina}}
+      </ion-title>
+      <ion-buttons end>
+        <button *ngIf="iconeBuscaVisivel" ion-button icon-only (click)="searchCurriculos()">
+        <ion-icon class="icons" name="search"></ion-icon>
+      </button>
+        <button ion-button icon-only (click)="vaParaPaginaCadastroDeCurriculo()">
+        <ion-icon class="icons" name="person-add"></ion-icon>
+      </button>
+      </ion-buttons>
+    </ion-row>
+
+    <ion-searchbar #inputSearch class="pesquisa" (ionInput)="changeInput()" (ionCancel)="pesquisaVisivel = !pesquisaVisivel;limpePesquisa()"
+      (ionClear)="limpePesquisa()" *ngIf="pesquisaVisivel" showCancelButton="true" cancelButtonText="Cancelar" [(ngModel)]="inputPesquisa"
+      full debounce="500" animated="true" placeholder="Pesquisa">
+    </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-segment color="secondary" [(ngModel)]="segSelecionado" (ionChange)="segmentChanged()">
+    <ion-segment-button value="0">
+      <ion-icon class="icon-segment" name="list"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-icon class="icon-segment" name="clipboard"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-slides (ionSlideDrag)="slideChanged()" (ionSlideNextStart)="slideChanged()" initialSlide="{{segSelecionado}}" (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <curriculos-lista></curriculos-lista>
+    </ion-slide>
+    <ion-slide>
+      <dash-board></dash-board>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>

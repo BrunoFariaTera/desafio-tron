@@ -1,0 +1,19 @@
+<ion-content>
+  <!--<p class="sem-curriculo" *ngIf="curriculos.length == 0">
+    Não existe currículo cadastrado!
+  </p>-->
+
+  <ion-card *ngFor="let curriculo of curriculos">
+    <ion-card-content class="card-style">
+      <ion-card-title>
+        {{curriculo.Nome}}
+      </ion-card-title>
+      <p>
+        {{curriculo.DataNascimento}} | {{curriculo.CPF}}
+      </p>
+      <p>
+        {{curriculo.Telefone}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

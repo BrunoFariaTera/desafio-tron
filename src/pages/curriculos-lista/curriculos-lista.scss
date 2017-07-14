@@ -1,0 +1,23 @@
+curriculos-lista {
+    ion-content {
+        position: absolute;
+    }
+    
+    .scroll-content {
+        height: 100% !important;
+    }
+
+    .content {
+        background-color: #f7f7f7;
+    }
+
+    .card-style {
+        padding: 0px;
+        padding-bottom: 11px;
+    }
+
+    .sem-curriculo {
+        margin-top: 205px;
+    }
+
+}

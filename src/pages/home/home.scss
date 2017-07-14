@@ -1,3 +1,25 @@
-page-home {
+page-home { 
+    .icon-segment{
+        color: $cor-tema !important;
+    }
 
+    .icons {
+        color: $cor-titulo;
+    }
+
+    .pesquisa {
+        animation-duration: 600ms;
+        animation-name: efeitoPesquisa;
+    }
+
+    @keyframes efeitoPesquisa {
+    from {
+        width: 0%;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
 }
